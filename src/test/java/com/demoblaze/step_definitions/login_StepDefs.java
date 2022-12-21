@@ -41,10 +41,14 @@ public class login_StepDefs {
 
 
     @When("The user enters valid username and password")
-    public void the_user_enters_valid_username_and_password(Map<String,String> userInfo) {
+    public void the_user_enters_valid_username_and_password(Map<String, String> userInfo) {
 
-       loginPage.loginWithParameter_mtd(userInfo.get("username"),userInfo.get("password"));
+        loginPage.loginWithParameter_mtd(userInfo.get("username"), userInfo.get("password"));
     }
 
 
+    @Then("verify invalid credential {string}")
+    public void verifyInvalidCredential(String expectedMessage) {
+        loginPage.verifyWithPopUpMessage_mtd(expectedMessage);
+    }
 }
